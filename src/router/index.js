@@ -288,18 +288,194 @@ export const constantRouterMap = [
     ]
   },
   {
-    path:'/demo',
+    path:'/elementUI',
     component: Layout,
-    redirect: '/demo/dIndex',
-    name: 'demo',
-    meta: {title: '平常练习', icon: 'sms'},
+    redirect: '/elementUI/basic',
+    name: 'elementUI',
+    meta: {title: 'elementUI', icon: 'sms'},
     children: [
       {
-        path: 'dIndex',
-        name: 'dIndex',
-        component: () => import('@/views/demo/dIndex/index'),
-        meta: {title: '2019.5.27', icon: 'sms-flash'}
-      }
+        path: '/elementUI/basic',
+        name: 'basic',
+        // component: Layout,
+        // redirect: '/elementUI/basic/border',
+        meta: {title: 'basic', icon: 'sms-flash'},
+        children: [
+          {
+            path: 'border',
+            name: 'border',
+            component: () => import('@/views/elementUI/basic/border/index'),
+            meta: {title: 'border', icon: 'sms-flash'}
+          },
+          {
+            path: 'button',
+            name: 'button',
+            component: () => import('@/views/elementUI/basic/button/index'),
+            meta: {title: 'button', icon: 'sms-flash'}
+          },
+          {
+            path: 'color',
+            name: 'color',
+            component: () => import('@/views/elementUI/basic/color/index'),
+            meta: {title: 'border', icon: 'sms-flash'}
+          },
+          {
+            path: 'containe',
+            name: 'containe',
+            component: () => import('@/views/elementUI/basic/containe/index'),
+            meta: {title: 'containe', icon: 'sms-flash'}
+          },
+          {
+            path: 'icon',
+            name: 'icon',
+            component: () => import('@/views/elementUI/basic/icon/index'),
+            meta: {title: 'icon', icon: 'sms-flash'}
+          },
+          {
+            path: 'layout',
+            name: 'layout',
+            component: () => import('@/views/elementUI/basic/layout/index'),
+            meta: {title: 'layout', icon: 'sms-flash'}
+          },
+          {
+            path: 'link',
+            name: 'link',
+            component: () => import('@/views/elementUI/basic/link/index'),
+            meta: {title: 'link', icon: 'sms-flash'}
+          },
+          {
+            path: 'typography',
+            name: 'typography',
+            component: () => import('@/views/elementUI/basic/typography/index'),
+            meta: {title: 'typography', icon: 'sms-flash'}
+          },
+        ]
+      },
+      {
+        path: '/elementUI/form',
+        name: 'form',
+        // component: Layout,
+        // redirect: '/elementUI/form/cascader',
+        meta: {title: 'element2', icon: 'sms-flash'},
+        children: [
+          {
+            path: 'cascader',
+            name: 'cascader',
+            component: () => import('@/views/elementUI/form/cascader/index'),
+            meta: {title: 'cascader', icon: 'sms-flash'}
+          },
+          {
+            path: 'checkbox',
+            name: 'checkbox',
+            component: () => import('@/views/elementUI/form/checkbox/index'),
+            meta: {title: 'checkbox', icon: 'sms-flash'}
+          },
+          {
+            path: 'colorPicker',
+            name: 'colorPicker',
+            component: () => import('@/views/elementUI/form/colorPicker/index'),
+            meta: {title: 'colorPicker', icon: 'sms-flash'}
+          },
+          {
+            path: 'datePicke',
+            name: 'datePicke',
+            component: () => import('@/views/elementUI/form/datePicke/index'),
+            meta: {title: 'datePicke', icon: 'sms-flash'}
+          },
+          {
+            path: 'dateTimePicker',
+            name: 'dateTimePicker',
+            component: () => import('@/views/elementUI/form/dateTimePicker/index'),
+            meta: {title: 'dateTimePicker', icon: 'sms-flash'}
+          },
+          {
+            path: 'eform',
+            name: 'eform',
+            component: () => import('@/views/elementUI/form/eform/index'),
+            meta: {title: 'eform', icon: 'sms-flash'}
+          },
+          {
+            path: 'input',
+            name: 'input',
+            component: () => import('@/views/elementUI/form/input/index'),
+            meta: {title: 'input', icon: 'sms-flash'}
+          },
+          {
+            path: 'inputNumber',
+            name: 'inputNumber',
+            component: () => import('@/views/elementUI/form/inputNumber/index'),
+            meta: {title: 'inputNumber', icon: 'sms-flash'}
+          },
+          {
+            path: 'Radio',
+            name: 'Radio',
+            component: () => import('@/views/elementUI/form/Radio/index'),
+            meta: {title: 'Radio', icon: 'sms-flash'}
+          },
+          {
+            path: 'rate',
+            name: 'rate',
+            component: () => import('@/views/elementUI/form/rate/index'),
+            meta: {title: 'rate', icon: 'sms-flash'}
+          },
+          {
+            path: 'select',
+            name: 'select',
+            component: () => import('@/views/elementUI/form/select/index'),
+            meta: {title: 'select', icon: 'sms-flash'}
+          },
+          {
+            path: 'slider',
+            name: 'slider',
+            component: () => import('@/views/elementUI/form/slider/index'),
+            meta: {title: 'slider', icon: 'sms-flash'}
+          },
+          {
+            path: 'switch',
+            name: 'switch',
+            component: () => import('@/views/elementUI/form/switch/index'),
+            meta: {title: 'switch', icon: 'sms-flash'}
+          },
+          {
+            path: 'timePicker',
+            name: 'timePicker',
+            component: () => import('@/views/elementUI/form/timePicker/index'),
+            meta: {title: 'timePicker', icon: 'sms-flash'}
+          },
+          {
+            path: 'transfer',
+            name: 'transfer',
+            component: () => import('@/views/elementUI/form/transfer/index'),
+            meta: {title: 'transfer', icon: 'sms-flash'}
+          },
+          {
+            path: 'upload',
+            name: 'upload',
+            component: () => import('@/views/elementUI/form/upload/index'),
+            meta: {title: 'upload', icon: 'sms-flash'}
+          }
+        ]
+      },
+      {
+        path: '/elementUI/notice',
+        name: 'notice',
+        component: () => import('@/views/elementUI/notice/index'),
+        meta: {title: '编辑广告'},
+        children:[
+          {
+            path:'alert',
+            name:'alert',
+            component:() => import('@/views/elementUI/notice/alert/index'),
+            meta:{title:'dslkfjlsd'}
+          },
+          {
+            path:'loading',
+            name:'loading',
+            component:() => import('@/views/elementUI/notice/loading/index'),
+            meta:{title:'dsf'}
+          }
+        ]
+      },
     ]
   },
   {path: '*', redirect: '/404', hidden: true}
