@@ -502,9 +502,10 @@ export const constantRouterMap = [
       },
       {
         path: '/elementUI/notice',
+        component: Layout,
+        redirect: '/elementUI/notice/alert',
         name: 'notice',
-        component: () => import('@/views/elementUI/notice/index'),
-        meta: {title: '编辑广告'},
+        meta: {title: '编辑广告', icon: 'sms'},
         children:[
           {
             path:'alert',

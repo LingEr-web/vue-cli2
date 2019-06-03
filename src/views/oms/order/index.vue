@@ -122,6 +122,7 @@
             <el-button
               size="mini"
               type="danger"
+              :ref="`btn${scope.$index}`"
               @click="handleDeleteOrder(scope.$index, scope.row)"
               v-show="scope.row.status===4" plain >删除订单</el-button>
             <el-dialog
@@ -355,6 +356,7 @@
       handleDeleteOrder(index, row){
         let ids=[];
         ids.push(row.id);
+        this.$refs[`btn${index}`].$el.blur()
         this.deleteOrder(ids);
       },
       handleBatchOperate(){
@@ -440,7 +442,7 @@
         });
       },
       deleteOrder(ids){
-        this.dialogVisibledel=true;
+        // this.dialogVisibledel=true;
         // this.$alert('这是一段内容', '标题名称', {
         //   confirmButtonText: '确定',
         //   callback: action => {
@@ -451,22 +453,22 @@
         //   }
         // });
       // }
-        // this.$confirm('是否要进行该删除操作?', '提示', {
-        //   confirmButtonText: '确定',
-        //   cancelButtonText: '取消',
-        //   type: 'warning',
-        // }).then(() => {
-        //   let params = new URLSearchParams();
-        //   params.append("ids",ids);
-        //   deleteOrder(params).then(response=>{
-        //     this.$message({
-        //       message: '删除成功！',
-        //       type: 'success',
-        //       duration: 1000
-        //     });
-        //     this.getList();
-        //   });
-        // }).catch(() => {console.log("取消删除")});
+        this.$confirm('是否要进行该删除操作?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+        }).then(() => {
+          let params = new URLSearchParams();
+          params.append("ids",ids);
+          deleteOrder(params).then(response=>{
+            this.$message({
+              message: '删除成功！',
+              type: 'success',
+              duration: 1000
+            });
+            this.getList();
+          });
+        }).catch(() => {console.log("取消删除")});
       },
       covertOrder(order){
         let address=order.receiverProvince+order.receiverCity+order.receiverRegion+order.receiverDetailAddress;
