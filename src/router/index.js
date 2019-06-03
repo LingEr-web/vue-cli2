@@ -457,6 +457,50 @@ export const constantRouterMap = [
         ]
       },
       {
+        path: '/elementUI/data',
+        name: 'data',
+        // component: () => import('@/views/elementUI/data/index'),
+        meta: {title: 'data', icon: 'sms-flash'},
+        children:[
+          {
+            path:'badge',
+            name:'badge',
+            component:() => import('@/views/elementUI/data/badge/index'),
+            meta:{title:'badge标记'}
+          },
+          {
+            path:'pagination',
+            name:'pagination',
+            component:() => import('@/views/elementUI/data/pagination/index'),
+            meta:{title:'pagination分页'}
+          },
+          {
+            path:'progress',
+            name:'progress',
+            component:() => import('@/views/elementUI/data/progress/index'),
+            meta:{title:'progress进度条'}
+          },
+          {
+            path:'table',
+            name:'table',
+            component:() => import('@/views/elementUI/data/table/index'),
+            meta:{title:'table表格'}
+          },
+          {
+            path:'tag',
+            name:'tag',
+            component:() => import('@/views/elementUI/data/tag/index'),
+            meta:{title:'tag标签'}
+          },
+          {
+            path:'tree',
+            name:'tree',
+            component:() => import('@/views/elementUI/data/tree/index'),
+            meta:{title:'tree树形结构'}
+          },
+        ]
+      },
+      {
         path: '/elementUI/notice',
         name: 'notice',
         component: () => import('@/views/elementUI/notice/index'),

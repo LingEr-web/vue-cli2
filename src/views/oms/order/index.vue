@@ -116,13 +116,25 @@
               v-show="scope.row.status===1">订单发货</el-button>
             <el-button
               size="mini"
+              type="danger"
               @click="handleViewLogistics(scope.$index, scope.row)"
-              v-show="scope.row.status===2||scope.row.status===3">订单跟踪</el-button>
+              v-show="scope.row.status===2||scope.row.status===3" plain>订单跟踪</el-button>
             <el-button
               size="mini"
               type="danger"
               @click="handleDeleteOrder(scope.$index, scope.row)"
-              v-show="scope.row.status===4">删除订单</el-button>
+              v-show="scope.row.status===4" plain >删除订单</el-button>
+            <el-dialog
+              title="提示"
+              :visible.sync="dialogVisibledel"
+              width="30%"
+              :before-close="handleClose">
+                   <span>这是一段信息</span>
+                   <span slot="footer" class="dialog-footer">
+             <el-button @click="dialogVisibledel = false">取 消</el-button>
+             <el-button type="primary" @click="dialogVisibledel = false">确 定</el-button>
+             </span>
+            </el-dialog>
           </template>
         </el-table-column>
       </el-table>
@@ -203,6 +215,7 @@
         total: null,
         operateType: null,
         multipleSelection: [],
+        dialogVisibledel:false,
         closeOrder:{
           dialogVisible:false,
           content:null,
@@ -332,6 +345,13 @@
       handleViewLogistics(index, row){
         this.logisticsDialogVisible=true;
       },
+      handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      },
       handleDeleteOrder(index, row){
         let ids=[];
         ids.push(row.id);
@@ -420,22 +440,33 @@
         });
       },
       deleteOrder(ids){
-        this.$confirm('是否要进行该删除操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          let params = new URLSearchParams();
-          params.append("ids",ids);
-          deleteOrder(params).then(response=>{
-            this.$message({
-              message: '删除成功！',
-              type: 'success',
-              duration: 1000
-            });
-            this.getList();
-          });
-        })
+        this.dialogVisibledel=true;
+        // this.$alert('这是一段内容', '标题名称', {
+        //   confirmButtonText: '确定',
+        //   callback: action => {
+        //     this.$message({
+        //       type: 'info',
+        //       message: `action: ${ action }`
+        //     });
+        //   }
+        // });
+      // }
+        // this.$confirm('是否要进行该删除操作?', '提示', {
+        //   confirmButtonText: '确定',
+        //   cancelButtonText: '取消',
+        //   type: 'warning',
+        // }).then(() => {
+        //   let params = new URLSearchParams();
+        //   params.append("ids",ids);
+        //   deleteOrder(params).then(response=>{
+        //     this.$message({
+        //       message: '删除成功！',
+        //       type: 'success',
+        //       duration: 1000
+        //     });
+        //     this.getList();
+        //   });
+        // }).catch(() => {console.log("取消删除")});
       },
       covertOrder(order){
         let address=order.receiverProvince+order.receiverCity+order.receiverRegion+order.receiverDetailAddress;
