@@ -1,5 +1,5 @@
 <template>
-<div>dskjfkdsfhkjds</div>
+<div>alert</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-
+     <div>badge</div>
 </template>
 
 <script>

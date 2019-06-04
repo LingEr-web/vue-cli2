@@ -1,5 +1,5 @@
 <template>
-
+  <div>pagination</div>
 </template>
 
 <script>

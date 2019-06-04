@@ -1,5 +1,5 @@
 <template>
-
+    <div>color颜色</div>
 </template>
 
 <script>

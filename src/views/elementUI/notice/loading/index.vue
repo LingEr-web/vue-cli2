@@ -1,5 +1,5 @@
 <template>
-  <div>dsdsfsdfffffffffffffffffffffffffffhkjds</div>
+  <div>loading</div>
 </template>
 
 <script>

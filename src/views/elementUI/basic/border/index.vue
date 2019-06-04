@@ -1,5 +1,5 @@
 <template>
-
+    <div>border</div>
 </template>
 
 <script>

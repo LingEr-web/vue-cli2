@@ -1,5 +1,5 @@
 <template>
-
+  <div>colorpicker</div>
 </template>
 
 <script>
