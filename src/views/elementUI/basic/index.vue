@@ -1,14 +1,16 @@
 <template>
-   <div>
-      <border></border>
-      <buttoned></buttoned>
-      <color></color>
-      <containe></containe>
-      <icon></icon>
-      <layout></layout>
-      <linked></linked>
-     <typography></typography>
-    </div>
+  <div class="app-container">
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane label="border" name="border"><border></border></el-tab-pane>
+    <el-tab-pane label="buttoned" name="buttoned"><buttoned></buttoned></el-tab-pane>
+    <el-tab-pane label="color" name="color"><color></color></el-tab-pane>
+    <el-tab-pane label="containe" name="containe"><containe></containe></el-tab-pane>
+    <el-tab-pane label="icon" name="icon"><icon></icon></el-tab-pane>
+    <el-tab-pane label="layout" name="layout"><layout></layout></el-tab-pane>
+    <el-tab-pane label="linked" name="linked"><linked></linked></el-tab-pane>
+    <el-tab-pane label="typography" name="typography"><typography></typography></el-tab-pane>
+  </el-tabs>
+  </div>
 </template>
 
 <script>
@@ -31,7 +33,17 @@
             layout,
             linked,
             typography
-         }
+         },
+        data() {
+          return {
+            activeName: 'border'
+          };
+        },
+        methods: {
+          handleClick(tab, event) {
+            console.log(tab, event);
+          }
+       }
     }
 </script>
 
