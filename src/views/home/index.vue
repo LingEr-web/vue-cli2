@@ -1,28 +1,32 @@
 <template>
   <div class="app-container">
-    <div class="address-layout">
-      <el-row :gutter="20">
-        <el-col :span="12">
-          <div class="out-border">
-            <div class="layout-title">GitHub地址</div>
-            <div style="padding: 20px;font-size: 18px" class="color-main">
-              <a href="https://github.com/macrozheng/mall">https://github.com/macrozheng/mall</a>
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="12">
-          <div class="out-border">
-            <div class="layout-title">码云地址</div>
-            <div style="padding: 20px;font-size: 18px" class="color-main">
-              <a href="https://gitee.com/macrozheng/mall">https://gitee.com/macrozheng/mall</a>
-            </div>
-          </div>
-        </el-col>
-      </el-row>
-    </div>
-
+    <!--文件上传-->
     <div class="uploadfile">
       <input type="file" @change="getExcel($event)">
+    </div>
+    <!--表单验证-->
+     <div>
+       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+         <el-form-item label="年龄" prop="age">
+           <el-input v-model.number="ruleForm.age"></el-input>
+         </el-form-item>
+         <el-form-item>
+           <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+         </el-form-item>
+       </el-form>
+       <el-upload
+         class="avatar-uploader"
+         action="https://jsonplaceholder.typicode.com/posts/"
+         :show-file-list="false"
+         :on-success="handleAvatarSuccess"
+         :before-upload="beforeAvatarUpload">
+         <img v-if="imageUrl" :src="imageUrl" class="avatar">
+         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+       </el-upload>
+     </div>
+    <!--雷达图-->
+    <div class="drawRadar">
+        <div id="radar"></div>
     </div>
 
     <div class="total-layout">
@@ -61,31 +65,6 @@
         </el-col>
       </el-row>
     </div>
-     <div>
-       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-         <el-form-item label="年龄" prop="age">
-           <el-input v-model.number="ruleForm.age"></el-input>
-         </el-form-item>
-         <el-form-item>
-           <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-         </el-form-item>
-       </el-form>
-       <el-upload
-         class="avatar-uploader"
-         action="https://jsonplaceholder.typicode.com/posts/"
-         :show-file-list="false"
-         :on-success="handleAvatarSuccess"
-         :before-upload="beforeAvatarUpload">
-         <img v-if="imageUrl" :src="imageUrl" class="avatar">
-         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-       </el-upload>
-     </div>
-    <!--雷达图-->
-    <div class="drawRadar">
-        <div id="radar"></div>
-    </div>
-
-
 
     <div class="un-handle-layout  ">
       <div class="layout-title">待处理事务</div>
@@ -454,53 +433,112 @@
       },
 
       drawLine(){
-        let myChart = this.$echarts.init(document.getElementById('radar')) // 基于准备好的dom，初始化echarts实例
-        var option = {//echarts图表最重要的主体对象
-          title: {
-            // text: '基础雷达图'
-          },//图表标题
-          tooltip: {},
+        let myChart = this.$echarts.init(document.getElementById('radar'))
+        var option = {
+          tooltip: {
+            trigger: 'axis',
+          },
           legend: {
-            data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+            x: 'center',
+            data:['某软件','某主食手机','某水果手机','降水量','蒸发量']
           },
-          radar: {
-            name: {
-              textStyle: {
-                color: '#fff',
-                backgroundColor: '#999',
-                borderRadius: 3,
-                padding: [3, 5]
-              }
+          radar: [
+            {
+              indicator: [
+                {text: '品牌', max: 100},
+                {text: '内容', max: 100},
+                {text: '可用性', max: 100},
+                {text: '功能', max: 100}
+              ],
+              center: ['25%','40%'],
+              radius: 80
             },
-            indicator: [
-              { name: '理论教育', max: 6500},
-              { name: '飞行教官资质认证飞行训练', max: 16000},
-              { name:'前进空中导空', max: 16000},
-              { name: '长机资质认证飞机训练', max: 30000},
-              { name: '航母资质认证飞行训练科目', max: 38000},
-              { name: '部署周期飞行训练科目', max: 52000},
-              { name: '参战资格飞行训练科目', max: 25000},
-              { name: '模拟训练', max: 25000}
-            ]
-          },
-          series: [{
-            // name: '预算 vs 开销（Budget vs spending）',
-            type: 'radar',
-            radius:'65%',
-            center:['50%','50%'],
-            data : [
-              {
-                value : [4300, 10000, 2800, 3500, 5000, 19000,1900],
-                // name : '理论教育'
+            {
+              indicator: [
+                {text: '外观', max: 100},
+                {text: '拍照', max: 100},
+                {text: '系统', max: 100},
+                {text: '性能', max: 100},
+                {text: '屏幕', max: 100}
+              ],
+              radius: 80,
+              center: ['50%','60%'],
+            },
+            {
+              indicator: (function (){
+                var res = [];
+                for (var i = 1; i <= 12; i++) {
+                  res.push({text:i+'月',max:100});
+                }
+                return res;
+              })(),
+              center: ['75%','40%'],
+              radius: 80
+            }
+          ],
+          series: [
+            {
+              type: 'radar',
+              tooltip: {
+                trigger: 'item',
+                formatter: function(a){
+                  var name=['外观','拍照','系统','性能'];
+                  var str = a.name+'<br>'
+                  var data = a.value;
+                  var value = data.reduce(function(a,b){
+                    return a+b;
+                  })
+                  for(var i=0;i<name.length;i++){
+                    str += name[i]+' ' + ((data[i]/value) * 100).toFixed(2) + '% <br>'
+                  }
+                  return str
+                }
               },
-              // {
-              //   value : [5000, 14000, 28000, 31000, 42000, 21000],
-              //   name : '实际开销（Actual Spending）'
-              // }
-            ]
-          }]
+              itemStyle: {
+                normal: {areaStyle: {type: 'default'}},
+                label: {
+                  show: true,
+                  position: 'top',
+                }
+              },
+              data: [
+                {
+                  value: [60,73,85,40],
+                  name: '某软件'
+                }
+              ]
+            },
+            {
+              type: 'radar',
+              radarIndex: 1,
+              data: [
+                {
+                  value: [85, 90, 90, 95, 95],
+                  name: '某主食手机'
+                },
+                {
+                  value: [95, 80, 95, 90, 93],
+                  name: '某水果手机'
+                }
+              ]
+            },
+            {
+              type: 'radar',
+              radarIndex: 2,
+              itemStyle: {normal: {areaStyle: {type: 'default'}}},
+              data: [
+                {
+                  name: '降水量',
+                  value: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 75.6, 82.2, 48.7, 18.8, 6.0, 2.3],
+                },
+                {
+                  name:'蒸发量',
+                  value:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 35.6, 62.2, 32.6, 20.0, 6.4, 3.3]
+                }
+              ]
+            }
+          ]
         };
-        // 绘制图表
         myChart.setOption(option,true);
       }
     }
