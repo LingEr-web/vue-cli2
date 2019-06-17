@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <ebreadcrumb></ebreadcrumb>
-    <edropdown></edropdown>
-    <enavMenu></enavMenu>
-    <epageHeader></epageHeader>
-    <esteps></esteps>
-    <etabs></etabs>
+  <div class="app-container">
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="ebreadcrumb" name="ebreadcrumb"><ebreadcrumb></ebreadcrumb></el-tab-pane>
+      <el-tab-pane label="edropdown" name="edropdown"><edropdown></edropdown></el-tab-pane>
+      <el-tab-pane label="enavMenu" name="enavMenu"><enavMenu></enavMenu></el-tab-pane>
+      <el-tab-pane label="epageHeader" name="epageHeader"><epageHeader></epageHeader></el-tab-pane>
+      <el-tab-pane label="esteps" name="esteps"><esteps></esteps></el-tab-pane>
+      <el-tab-pane label="etabs" name="etabs"><etabs></etabs></el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
@@ -25,7 +27,17 @@
           epageHeader,
           esteps,
           etabs
+        },
+      data() {
+        return {
+          activeName: 'ebreadcrumb'
+        };
+      },
+      methods: {
+        handleClick(tab, event) {
+          console.log(tab, event);
         }
+      }
     }
 </script>
 

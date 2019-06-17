@@ -1,18 +1,20 @@
 <template>
-    <div>
-      <ebacktop></ebacktop>
-      <ecalendar></ecalendar>
-      <ecard></ecard>
-      <ecarousel></ecarousel>
-      <ecollapse></ecollapse>
-      <edialog></edialog>
-      <edivider></edivider>
-      <eimage></eimage>
-      <einfiniteScroll></einfiniteScroll>
-      <epopover></epopover>
-      <etimeline></etimeline>
-      <etooltip></etooltip>
-    </div>
+  <div class="app-container">
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="ebacktop" name="ebacktop"><ebacktop></ebacktop></el-tab-pane>
+      <el-tab-pane label="ecalendar" name="ecalendar"><ecalendar></ecalendar></el-tab-pane>
+      <el-tab-pane label="ecard" name="ecard"><ecard></ecard></el-tab-pane>
+      <el-tab-pane label="ecarousel" name="ecarousel"><ecarousel></ecarousel></el-tab-pane>
+      <el-tab-pane label="ecollapse" name="ecollapse"><ecollapse></ecollapse></el-tab-pane>
+      <el-tab-pane label="edialog" name="edialog"><edialog></edialog></el-tab-pane>
+      <el-tab-pane label="edivider" name="edivider"><edivider></edivider></el-tab-pane>
+      <el-tab-pane label="eimage" name="eimage"><eimage></eimage></el-tab-pane>
+      <el-tab-pane label="einfiniteScroll" name="einfiniteScroll"><einfiniteScroll></einfiniteScroll></el-tab-pane>
+      <el-tab-pane label="epopover" name="epopover"><epopover></epopover></el-tab-pane>
+      <el-tab-pane label="etimeline" name="etimeline"><etimeline></etimeline></el-tab-pane>
+      <el-tab-pane label="etooltip" name="etooltip"><etooltip></etooltip></el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 
 <script>
@@ -43,6 +45,16 @@
         epopover,
         etimeline,
         etooltip
+      },
+      data() {
+        return {
+          activeName: 'ebacktop'
+        };
+      },
+      methods: {
+        handleClick(tab, event) {
+          console.log(tab, event);
+        }
       }
     }
 </script>

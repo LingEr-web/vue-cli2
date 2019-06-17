@@ -1,7 +1,10 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
+    <!--缩小的方格-->
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
+    <!--头部导航-->
     <breadcrumb></breadcrumb>
+    <!--用户头像-->
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
         <img class="user-avatar" :src="avatar">

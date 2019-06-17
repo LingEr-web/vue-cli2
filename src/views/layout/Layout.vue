@@ -2,6 +2,7 @@
   <div class="app-wrapper" :class="classObj">
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
+      <!--头部导航-->
       <navbar></navbar>
       <app-main></app-main>
     </div>

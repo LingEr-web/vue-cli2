@@ -4,6 +4,8 @@
     <div class="uploadfile">
       <input type="file" @change="getExcel($event)">
     </div>
+    <!--视频video案例-->
+    <video src="../../assets/video/aaa.mp4" type="video/mp4" controls autoplay loop style="width: 100%;height: 250px;margin: 0;padding: 0;"></video>
     <!--表单验证-->
      <div>
        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -24,6 +26,40 @@
          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
        </el-upload>
      </div>
+
+
+    <!--表单验证-->
+    <div>
+      <el-form :model="forms" status-icon :rules="formsrules" ref="forms" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="name" prop="name">
+          <el-input v-model.number="forms.name"></el-input>
+        </el-form-item>
+        <el-form-item label="arr" prop="name">
+          <template>
+            <el-row v-for="item in forms.arr">
+              <el-col :span="7">
+                <el-form-item prop="item">
+                  <input v-model="item.aaa"/>
+                </el-form-item>
+              </el-col>
+              <el-col :span="7">
+                <el-form-item>
+                  <input v-model="item.bbb"/>
+                </el-form-item>
+              </el-col>
+              <el-col :span="7">
+                <el-form-item>
+                  <input v-model="item.ccc"/>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </template>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
     <!--雷达图-->
     <div class="drawRadar">
         <div id="radar"></div>
@@ -99,6 +135,16 @@
         labelPosition: 'right',
         ruleForm: {
           age: ''
+        },
+        forms:{
+          name:"guojinling",
+          arr:[
+            {aaa:"11111",bbb:"22222",ccc:"33333"},
+            {aaa:"11111",bbb:"22222",ccc:"33333"},
+            {aaa:"11111",bbb:"22222",ccc:"33333"},
+            {aaa:"11111",bbb:"22222",ccc:"33333"},
+            {aaa:"11111",bbb:"22222",ccc:"33333"}
+          ]
         },
         imageUrl: '',
         pickerOptions: {
