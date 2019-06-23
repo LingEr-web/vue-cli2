@@ -19,6 +19,17 @@ export const constantRouterMap = [
     }]
   },
   {
+    path: '',
+    component: Layout,
+    redirect: '/wangeditor',
+    children: [{
+      path: 'wangeditor',
+      name: 'wangeditor',
+      component: () => import('@/views/wangeditor/index'),
+      meta: {title: '富文本编辑器', icon: 'home'}
+    }]
+  },
+  {
     path: '/pms',
     component: Layout,
     redirect: '/pms/product',
