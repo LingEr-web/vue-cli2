@@ -4,8 +4,24 @@
     <div class="uploadfile">
       <input type="file" @change="getExcel($event)">
     </div>
+    <!--&lt;!&ndash;导入word并识别内容&ndash;&gt;-->
+    <!--<div class="upload-word">-->
+      <!--<el-input-->
+        <!--type="textarea"-->
+        <!--:rows="2"-->
+        <!--placeholder="请输入内容"-->
+        <!--:autosize="{ minRows:10, maxRows: 40}"-->
+        <!--v-model="textarea">-->
+      <!--</el-input>-->
+      <!--<div class="upload-button">-->
+         <!--<el-upload ref="uploadword" action="" :show-file-list="false" :auto-upload="false" :limit="1" accept="doc">-->
+              <!--<el-button slot="trigger" icon="el-icon-upload" size="mini" class="f14s" type="primary">导入</el-button>-->
+         <!--</el-upload>-->
+         <!--<el-button  icon="el-icon-upload" size="mini" class="f14s" type="primary">编辑</el-button>-->
+      <!--</div>-->
+    <!--</div>-->
     <!--视频video案例-->
-    <video src="../../assets/video/aaa.mp4" type="video/mp4" controls autoplay loop style="width: 100%;height: 250px;margin: 0;padding: 0;"></video>
+    <!--<video src="../../assets/video/aaa.mp4" type="video/mp4" controls autoplay loop style="width: 100%;height: 250px;margin: 0;padding: 0;"></video>-->
     <!--表单验证-->
      <div>
        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -36,7 +52,7 @@
         </el-form-item>
         <el-form-item label="arr" prop="name">
           <template>
-            <el-row v-for="item in forms.arr">
+            <el-row v-for="(item,index) in forms.arr" :key="index">
               <el-col :span="7">
                 <el-form-item prop="item">
                   <input v-model="item.aaa"/>
@@ -127,6 +143,7 @@
         }, 1000);
       };
       return {
+        textarea2: '',
         dots: {
           hour: '',
           minture: '',
@@ -186,7 +203,8 @@
         dataEmpty: false,
         rules: {
           age: [ { validator: checkAge, trigger: 'blur' }]
-        }
+        },
+        formsrules:{}
       }
     },
     mounted(){
@@ -532,4 +550,5 @@
     margin: 0 auto;
     /*background-color: #1e6abc;*/
   }
+
 </style>
