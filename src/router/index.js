@@ -38,6 +38,12 @@ export const constantRouterMap = [
         meta: {title: '读取txt文件', icon: 'sms-flash'},
       },
       {
+        path: 'excels',
+        name: 'excels',
+        component: () => import('@/views/wangeditor/excels/index'),
+        meta: {title: '读取excel文件', icon: 'sms-flash'},
+      },
+      {
         path: 'wangeditor',
         name: 'wangeditor',
         component: () => import('@/views/wangeditor/wangeditor/index'),

@@ -1,9 +1,6 @@
 <template>
   <div class="app-container">
-    <!--文件上传-->
-    <div class="uploadfile">
-      <input type="file" @change="getExcel($event)">
-    </div>
+
     <!--&lt;!&ndash;导入word并识别内容&ndash;&gt;-->
     <!--<div class="upload-word">-->
       <!--<el-input-->

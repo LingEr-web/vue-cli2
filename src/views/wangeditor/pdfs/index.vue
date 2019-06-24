@@ -1,5 +1,6 @@
 <template>
   <div class="pdf">
+    https://github.com/FranckFreiburger/vue-pdf#readme
     <button
       @click="logContent"
     >log content
