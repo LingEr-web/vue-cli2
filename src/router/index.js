@@ -23,8 +23,14 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/wangeditor/wangeditor',
     name: 'wangeditor',
-    meta: {title: '富文本', icon: 'home'},
+    meta: {title: '文本文件', icon: 'home'},
     children: [
+      {
+        path: 'pdfs',
+        name: 'pdfs',
+        component: () => import('@/views/wangeditor/pdfs/index'),
+        meta: {title: '读取pdf文件', icon: 'sms-flash'},
+      },
       {
         path: 'texts',
         name: 'texts',
