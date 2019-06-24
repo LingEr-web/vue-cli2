@@ -19,15 +19,31 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '',
+    path:'/wangeditor',
     component: Layout,
-    redirect: '/wangeditor',
-    children: [{
-      path: 'wangeditor',
-      name: 'wangeditor',
-      component: () => import('@/views/wangeditor/index'),
-      meta: {title: '富文本编辑器', icon: 'home'}
-    }]
+    redirect: '/wangeditor/wangeditor',
+    name: 'wangeditor',
+    meta: {title: '富文本', icon: 'home'},
+    children: [
+      {
+        path: 'wangeditor',
+        name: 'wangeditor',
+        component: () => import('@/views/wangeditor/wangeditor/index'),
+        meta: {title: 'wangeditor', icon: 'sms-flash'},
+      },
+      {
+        path: 'UEditor',
+        name: 'UEditor',
+        component: () => import('@/views/wangeditor/UEditor/index'),
+        meta: {title: 'UEditor百度编辑器', icon: 'sms-flash'},
+      },
+      {
+        path: 'TinyMCE',
+        name: 'TinyMCE',
+        component: () => import('@/views/wangeditor/TinyMCE/index'),
+        meta: {title: 'TinyMCE', icon: 'sms-flash'},
+      }
+    ]
   },
   {
     path: '/pms',
