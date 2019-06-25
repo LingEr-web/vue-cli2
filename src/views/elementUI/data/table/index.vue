@@ -26,6 +26,31 @@
         :formatter="formatter">
       </el-table-column>
     </el-table>
+    <!--表格样式大小-->
+    <template>
+      <el-table
+        :data="tableData2"
+        border
+        size="mini"
+        cell-class-name="gjl"
+        style="width: 100%">
+        <el-table-column
+          prop="date"
+          label="日期"
+          width="180" class="gjl">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="姓名"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="地址">
+        </el-table-column>
+      </el-table>
+    </template>
+
   </div>
 </template>
 
@@ -50,7 +75,26 @@
             date: '2016-05-03',
             name: 'c',
             address: '上海市普陀区金沙江路 1516 弄'
-          }]
+          }],
+          tableData2:[
+            {
+              date: '2016-05-02',
+              name: 'a',
+              address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+              date: '2016-05-04',
+              name: 'b',
+              address: '上海市普陀区金沙江路 1517 弄'
+            }, {
+              date: '2016-05-01',
+              name: 'd',
+              address: '上海市普陀区金沙江路 1519 弄'
+            }, {
+              date: '2016-05-03',
+              name: 'c',
+              address: '上海市普陀区金沙江路 1516 弄'
+            }
+          ]
         }
       },
       methods: {
@@ -65,6 +109,8 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+  .gjl{
+    font-size: 18px;
+  }
 </style>
